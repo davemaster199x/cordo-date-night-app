@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="js/jsonrpc.js"></script>
+  <script src="js/jsonrpc.config.js"></script>
+  <style>
+    @keyframes swipeLeft {
+        0% {
+        transform: translateX(100%);
+        }
+        100% {
+        transform: translateX(0%);
+        }
+    }
+
+    @keyframes swipeRight {
+        0% {
+        transform: translateX(-100%);
+        }
+        100% {
+        transform: translateX(0%);
+        }
+    }
+
+    .swipe-left {
+        animation: swipeLeft 0.5s ease-out forwards;
+    }
+
+    .swipe-right {
+        animation: swipeRight 0.5s ease-out forwards;
+    }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Login Form -->
+  <div id="loginPage" class="h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label for="username" class="block mb-2">Email</label>
+          <input type="text" id="email" class="w-full p-2 border rounded" required>
+        </div>
+        <div>
+          <label for="password" class="block mb-2">Password</label>
+          <input type="password" id="password" class="w-full p-2 border rounded" required>
+        </div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Categories Swipe -->
+  <div id="categoryPage" class="hidden h-screen flex flex-col">
+    <!-- Header with User's Name and Logout Button -->
+    <div class="w-full bg-gray-800 text-white p-4 flex justify-between items-center">
+      <span id="userName" class="text-lg font-bold"></span>
+      <button id="logoutButton" class="bg-red-500 hover:bg-red-600 py-2 px-4 rounded">Logout</button>
+    </div>
+
+    <!-- Main Content: Categories Swipe -->
+    <div class="flex-grow flex items-center justify-center">
+      <div class="w-full h-full flex items-center justify-center">
+        <div id="categoryContainer" class="relative w-full h-full flex items-center justify-center bg-white overflow-hidden">
+          <!-- Category content gets dynamically loaded -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subcategory Container -->
+  <div id="subcategoryContainer" class="hidden h-screen flex items-center justify-center">
+    <div class="text-center">
+      <h3 id="selectedCategory" class="text-2xl font-bold mb-4"></h3>
+      <div id="subcategories" class="space-y-4">
+        <!-- Dynamically populated subcategories -->
+      </div>
+      <button id="backToCategories" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Back to Categories</button>
+    </div>
+  </div>
+
+  <div id="imageContainer"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/test.js"></script>
+</body>
+</html>
